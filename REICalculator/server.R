@@ -1,7 +1,7 @@
 #
 # Uses user inputs to calculate Response Entropy Index for dataset.
 # Created by Sage Mahannah
-# Last Updated 8/22/2020
+# Last Updated 4/26/2021
 # Contact sage.mahannah@gmail.com for questions, comments or concerns.
 #
 
@@ -207,17 +207,16 @@ shinyServer(function(input, output) {
         #final$Percentile <- 0
         #input$range$value
         
-        # coloring rows based on suspiciousness 
-        final <- datatable(final) %>% formatStyle('Suspicious', target = 'row', backgroundColor = styleEqual(c('Yes', 'Maybe'), c('#FF3333', '#FFFF33')))
-        
         return(final)
     })
     
-    # final output
+    # final output, formatting table
     output$message <- renderText({value()})
-    output$contents <- DT::renderDataTable({calculations()}, 
-                                           options = list(lengthMenu = list(c(50, 100, 200, -1), c('50', '100', '200', 'All')),
-                                                          pageLength = 100))
+    output$contents <- DT::renderDataTable(datatable(calculations(), 
+                                                     options = list(lengthMenu = list(c(50, 100, 200, -1), 
+                                                                                      c('50', '100', '200', 'All')), pageLength = 100))
+                                           %>% formatStyle('Suspicious', target = 'row', backgroundColor = styleEqual(c('Yes', 'Maybe'), c('#FF3333', '#FFFF33'))) , 
+    )
     
     # download a file with the REI calculations
     output$downloadData <- downloadHandler(

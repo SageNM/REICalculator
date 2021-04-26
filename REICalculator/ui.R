@@ -1,7 +1,7 @@
 #
 # Sets up webpage for Response Entropy Index Calculator.
 # Created by Sage Mahannah
-# Last Updated 8/5/2020
+# Last Updated 4/26/2021
 # Contact sage.mahannah@gmail.com for questions, comments or concerns.
 #
 
@@ -72,7 +72,7 @@ shinyUI(
                             tags$p(tags$strong("Step One: "),"Enter in the variable names of the columns you would like to consider for your calculations, separated by commas. Variable names are case sensitive. To include all variables starting or ending with a phrase, simply put a dash after or before the phrase accordingly. For example, type 'DEP-' to include columns starting with DEP, type '-r' to include all columns ending with r, or type '-var-' to include all columns with names containing the phrase var. To include all columns, simply include only a dash. At least 2 columns must be found under the search parameters in order to calculate the REI. If your dataset does not include variable names, uncheck the header box. This will automatically calculate the REI using all columns."),
                             tags$p(tags$strong("Step Two: "),"Select the file type for the dataset."),
                             tags$p(tags$strong("Step Three: "),"Select the file to be considered."),
-                            tags$p(tags$strong("Step Four: "),"Review your output. REI scores that are both too high and too low",tags$em(" could "), "indicate careless responding.  Row numbers with REI scores in the lower 5th percentile and upper 95th percentile of your sample are flagged in red.  Raw data for these rows should be examined manually before a decision is made to remove the data. "),
+                            tags$p(tags$strong("Step Four: "),"Review your output. REI scores that are both too high and too low",tags$em(" could "), "indicate careless responding.  Row numbers with REI scores in the lower 5th percentile and upper 95th percentile of your sample are flagged in red. Note that should a row contain any missing values, that row's REI will return as 0. Raw data for these rows should be examined manually before a decision is made to remove the data. "),
                             tags$p(tags$strong("Step Five (Optional): "),"Download a datafile with REI values.")
                    ),
                    tabPanel("About", 
